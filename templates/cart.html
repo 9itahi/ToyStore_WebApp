@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %} Cart{% endblock %}
+
+<!-- <style>
+  img{
+    height: 200px;
+    width: 200px;
+  }
+</style> -->
+{% block content %}
+<div class="d-flex flex-row">
+  <div class="container">
+    {% for toy in toys %}
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{toy.image_link}}}" style="height: 200px; width: 200px; border-radius:5px;">
+        <div class="card-body">
+          <h5 class="card-title"> {{toy.name}}</h5>
+          <p class="card-text"> {{ toy.price }} <span class="glyphicon glyphicon-bitcoin"></span></p>
+          <a href="#" class="btn btn-success">Add to Cart</a>
+        </div>
+      </div>
+        
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
