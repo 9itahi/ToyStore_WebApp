@@ -1,6 +1,7 @@
-# from flask_login import UserMixin
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, DateTime, String, Integer
+from werkzeug.security import generate_password_hash
 
 db_path = "sqlite:///ts.db"
 
@@ -22,7 +23,7 @@ def create_db():
     mike = (User(
         email = 'jack@example.com',
         username = 'jack',
-        password = '123456789',
+        password = generate_password_hash('123456789', 'pbkdf2:sha256'),
         age = 12
     ))
 
@@ -44,7 +45,7 @@ def create_db():
     toy6.add()
 
 # User Model
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = Column(Integer, primary_key = True)
     email = Column(String)
     username = Column(String)
