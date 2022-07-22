@@ -89,4 +89,4 @@ def signout():
 
 @app.errorhandler(401)
 def unauthorized(error):
-    return render_template('404.html')
+    return render_template('401.html',user=current_user)
